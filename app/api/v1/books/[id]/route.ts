@@ -79,6 +79,21 @@ export async function PATCH(request: Request, { params }: Props) {
       )
     }
 
+    if (
+      tahun_terbit !== null &&
+      (!Number.isInteger(Number(tahun_terbit)) ||
+        Number(tahun_terbit) < 1901 ||
+        Number(tahun_terbit) > 2155)
+    ) {
+      return Response.json(
+        {
+          success: false,
+          message: "Tahun terbit harus antara 1901 dan 2155.",
+        },
+        { status: 400 }
+      )
+    }
+
     const [check] = await getPool().execute(
       "SELECT id FROM tb_books WHERE id = ?",
       [id]

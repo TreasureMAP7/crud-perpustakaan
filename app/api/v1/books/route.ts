@@ -68,6 +68,21 @@ export async function POST(request: Request) {
       )
     }
 
+    if (
+      tahun_terbit !== null &&
+      (!Number.isInteger(Number(tahun_terbit)) ||
+        Number(tahun_terbit) < 1901 ||
+        Number(tahun_terbit) > 2155)
+    ) {
+      return Response.json(
+        {
+          success: false,
+          message: "Tahun terbit harus antara 1901 dan 2155.",
+        },
+        { status: 400 }
+      )
+    }
+
     const [result] = await getPool().execute<ResultSetHeader>(
       `INSERT INTO tb_books
       (judul, deskripsi, penulis, penerbit, tahun_terbit, stok, category_id)
