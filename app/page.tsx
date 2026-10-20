@@ -393,7 +393,7 @@ export default function Page() {
             }}
           >
             <div className="flex flex-col gap-2">
-              <Label htmlFor="judul">Judul</Label>
+              <Label htmlFor="judul">Judul*</Label>
               <Input
                 id="judul"
                 required
@@ -416,7 +416,7 @@ export default function Page() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="penulis">Penulis</Label>
+              <Label htmlFor="penulis">Penulis*</Label>
               <Input
                 id="penulis"
                 required
@@ -446,12 +446,12 @@ export default function Page() {
                 onChange={(event) =>
                   updateForm("tahun_terbit", event.target.value)
                 }
-                placeholder="Contoh: 2025"
+                placeholder="Min: 1901, Max: 2155"
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="stok">Stok</Label>
+              <Label htmlFor="stok">Stok*</Label>
               <Input
                 id="stok"
                 type="number"
@@ -464,7 +464,7 @@ export default function Page() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="category_id">Kategori</Label>
+              <Label htmlFor="category_id">Kategori*</Label>
 
               <Select
                 value={form.category_id}
